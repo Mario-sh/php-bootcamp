@@ -1,7 +1,34 @@
 <?php
 //1====Logique php=====
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-var_dump($_POST);
+    //var_dump($_POST);
+    //Récupération des valeurs dans des variables plus courtes
+    $num1 = $_POST["nombre1"];
+    $num2 = $_POST["nombre2"];
+    $op = $_POST["operateur"];
+
+    //vérifier d'abord si une case est vide 
+    if (empty($num1) || empty($num2)) {
+        echo "Veuillez entrez deux nombres svp";
+    } else {
+        //Pour les calculs
+        if ($op === "plus") {
+            $resultat = $num1 + $num2;
+        } elseif ($op === "moins") {
+            $resultat = $num1 - $num2;
+        } elseif ($op === "fois") {
+            $resultat = $num1 * $num2;
+        } elseif ($op === "divise") {
+            if ($num2 == 0) {
+                $resultat = "impossible de diviser un nombre pas zéro ";
+            } else {
+                $resultat = $num1 / $num2;
+            }
+        } else {
+            $resultat = "Opérateur invalide ou corrompu";
+        }
+        echo " Résultat:" . $resultat;
+    }
 }
 
 
