@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     //vérifier d'abord si une case est vide 
     if (empty($num1) || empty($num2)) {
-        echo "Veuillez entrez deux nombres svp";
+        $resultat = "Veuillez entrez deux nombres svp";
     } else {
         //Pour les calculs
         if ($op === "plus") {
@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         } else {
             $resultat = "Opérateur invalide ou corrompu";
         }
-        echo " Résultat:" . $resultat;
+       
     }
 }
 
@@ -57,6 +57,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <input type="number" name="nombre2" placeholder="Votre second nombre ici">
         <button type="submit" name="OK">Calculer</button>
     </form>
+    <!--Affichage du résultat ou de l'erreur sous le formulaire-->
+    <?php if (isset($resultat)): ?>
+        <?php echo "Résultat :" . $resultat; ?>
+    <?php endif; ?>    
 </body>
 
 </html>
